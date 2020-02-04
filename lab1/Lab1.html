@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Edlin Guerra Castro" />
+<meta name="author" content="Prof. Edlin Guerra Castro" />
 
 
 <title>Modelación Estadística. Lab1: Aprendiendo a usar R y R-Studio</title>
@@ -363,7 +363,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Modelación Estadística. Lab1: Aprendiendo a usar R y R-Studio</h1>
-<h4 class="author">Edlin Guerra Castro</h4>
+<h4 class="author">Prof. Edlin Guerra Castro</h4>
 <h4 class="date">3/2/2020</h4>
 
 </div>
@@ -374,12 +374,21 @@ summary {
 <p>El objetivo principal de este laboratorio es introducirlos a <a href="https://www.r-project.org/">R</a> y <a href="https://rstudio.com/">RStudio</a>, las herramientas computacionales que utilizaremos a lo largo del semestre para aprender a aplicar los conceptos más importantes de <em>Modelación estadística</em>, pero en especial, para aprender a procesar y analizar datos reales.</p>
 <p>El programa <a href="https://www.r-project.org/">R</a>, sus versiones actualizadas y todos los paquetes con funciones, asi como otra información relevante se encuentre en los repositorios de R conocidos como <strong>CRAN</strong> (Comprehensive R Archive Network). Los distintos servidores distribuidos en todo el mundo, conforman el CRAN y son conocidos como los <strong>CRAN mirrors</strong> (de espejo). Para descargar los paquetes requieres antes escoger un <strong>CRAN mirror</strong>, y la función que te permite escogerlo de una lista que aparece en la consola es <code>chooseCRANmirror</code>. Alternativamente, se pueden descargar paquetes desde otros repositorios, uno muy popular y que estaremos usando en esta asignatura es <a href="https://github.com/">GitHub</a>.</p>
 <p><a href="https://rstudio.com/">RStudio</a> es un entorno de desarrollo integrado (IDE) para <strong>R</strong>. Incluye una consola, editor de comandos y líneas de programación que admite la ejecución directa de código, así como herramientas para graficar, documentar, registrar el historial de comandos ejecutados, acceder a archivos, y muchas cosas más desde la gestión de un espacio de trabajo. <strong>RStudio</strong> hace que el trabajar con <strong>R</strong> sea más poderoso, y a su vez simple. Para que tengan una idea, esta guía se escribió desde <strong>RStudio</strong>.</p>
-<p>Esta práctica la desarrollaremos desde <a href="https://rstudio.cloud/">Rstudio Cloud</a>, una versión en línea de <strong>RStudio</strong> en el que podemos compartir los ejercicios y hacer seguimiento a las soluciones. Esto no los limita que instalen <strong>R</strong> y <strong>RStusio</strong> en sus computadores, por favor háganlo fuera del horario de clase. La idea por ahora es ser eficientes con el uso del tiempo y evitar distraernos con instalaciones. Para instalarlos (¡despues de clase!), descarguen los archivos instaladores desde:</p>
+<p>Esta práctica la desarrollaremos desde <a href="https://rstudio.cloud/">Rstudio Cloud</a>, una versión en línea de <strong>RStudio</strong> en el que podemos compartir los ejercicios y hacer seguimiento a las soluciones. Esto no los limita que instalen <strong>R</strong> y <strong>RStusio</strong> en sus computadores, por favor háganlo fuera del horario de clase. La idea por ahora es ser eficientes con el uso del tiempo y evitar distraernos con instalaciones. Para instalarlos (<strong>¡despues de clase!</strong>), descarguen los archivos instaladores desde:</p>
 <ul>
 <li><a href="https://www.r-project.org/">R</a></li>
 <li><a href="https://rstudio.com/">RStudio</a></li>
 </ul>
-<p>Lo que harán ahora es aceptar la invitación a <em>Rstudio Cloud</em> que les envié por correo. Acá un pequeño ejemplo, copien y peguen este código en la consola de Rstudio Cloud:</p>
+<p>Lo que harán ahora es:</p>
+<ol style="list-style-type: decimal">
+<li>Aceptar la invitación a <em>Rstudio Cloud</em> que les envié por correo.</li>
+<li>Luego se registrarán con el usuario y contraseña que quieran (nota: pueden usar su cuenta gmail para hacerlo automático).</li>
+<li>Inmediatamente visitarán el repositorio de actividades en <strong>R</strong> de esta asignatura en <a href="https://github.com/edlinguerra/LCA-ME">GitHub</a>. Solo hagan click al enlace.</li>
+<li>En este punto vamos a clonar el repositorio con HTTPS, para ello copien desde el botón verde <strong>Clone or download</strong>, seleccionando la dirección <code>https</code> allí señalada.</li>
+<li>Entrarán a su sesión de <em>Rstudio Cloud</em> y crearán un proyecto nuevo desde un repositorio (<strong>New Project from Git Repo</strong>). Peguen la dirección y listo. Se iniciará una sesión de <strong>RStudio</strong> con los archivos necesarios.<br />
+</li>
+<li>Acá un pequeño ejemplo, copien y peguen este código en la consola de Rstudio Cloud:</li>
+</ol>
 <pre class="r"><code>install.packages(&quot;gcookbook&quot;)
 install.packages(&quot;ggplot2&quot;)
 library(gcookbook)
@@ -521,6 +530,9 @@ install.packages(&quot;tidyr&quot;)
 #Para administrar bases de datos: usa dplyr
 install.packages(&quot;dplyr&quot;)
 
+#Para importar datos desde Excel: readxl
+install.packages(&quot;readxl&quot;)
+
 #Para análisis en ecología de comunidades usa vegan
 install.packages(&quot;vegan&quot;)
 
@@ -548,7 +560,9 @@ pp +  theme_bw()+
       ylab(&quot;largo del pétalo (cm)&quot;)+
       scale_y_continuous(breaks = seq(1,7,1))+
       scale_x_continuous(breaks = seq(4,8,1))+
-      annotate(geom = &quot;text&quot;, x= 4.3, y = 6.5, parse=TRUE, label= &quot;italic(r) == 0.87&quot;)</code></pre>
+      annotate(geom = &quot;text&quot;, x= 4.3, y = 6.5, parse=TRUE, label= &quot;italic(r) == 0.87&quot;)
+      
+#¿cuál gráfico le gustó más? </code></pre>
 <p>Por ahora es suficiente. Salve el proyecto con el nombre “laboratorio 1”.</p>
 </div>
 </div>

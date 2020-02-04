@@ -166,7 +166,8 @@ seguimiento a las soluciones. Esto no los limita que instalen \textbf{R}
 y \textbf{RStusio} en sus computadores, por favor háganlo fuera del
 horario de clase. La idea por ahora es ser eficientes con el uso del
 tiempo y evitar distraernos con instalaciones. Para instalarlos
-(¡despues de clase!), descarguen los archivos instaladores desde:
+(\textbf{¡despues de clase!}), descarguen los archivos instaladores
+desde:
 
 \begin{itemize}
 \tightlist
@@ -176,9 +177,34 @@ tiempo y evitar distraernos con instalaciones. Para instalarlos
   \href{https://rstudio.com/}{RStudio}
 \end{itemize}
 
-Lo que harán ahora es aceptar la invitación a \emph{Rstudio Cloud} que
-les envié por correo. Acá un pequeño ejemplo, copien y peguen este
-código en la consola de Rstudio Cloud:
+Lo que harán ahora es:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Aceptar la invitación a \emph{Rstudio Cloud} que les envié por correo.
+\item
+  Luego se registrarán con el usuario y contraseña que quieran (nota:
+  pueden usar su cuenta gmail para hacerlo automático).
+\item
+  Inmediatamente visitarán el repositorio de actividades en \textbf{R}
+  de esta asignatura en
+  \href{https://github.com/edlinguerra/LCA-ME}{GitHub}. Solo hagan click
+  al enlace.
+\item
+  En este punto vamos a clonar el repositorio con HTTPS, para ello
+  copien desde el botón verde \textbf{Clone or download}, seleccionando
+  la dirección \texttt{https} allí señalada.
+\item
+  Entrarán a su sesión de \emph{Rstudio Cloud} y crearán un proyecto
+  nuevo desde un repositorio (\textbf{New Project from Git Repo}).
+  Peguen la dirección y listo. Se iniciará una sesión de
+  \textbf{RStudio} con los archivos necesarios.\\
+\item
+  Acá un pequeño ejemplo, copien y peguen este código en la consola de
+  Rstudio Cloud:
+\end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -490,6 +516,9 @@ escribir en la consola:
 
 \CommentTok{#Para administrar bases de datos: usa dplyr}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+
+\CommentTok{#Para importar datos desde Excel: readxl}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"readxl"}\NormalTok{)}
 
 \CommentTok{#Para análisis en ecología de comunidades usa vegan}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"vegan"}\NormalTok{)}

@@ -3,7 +3,6 @@ title: 'Modelación Estadística. Lab1: Aprendiendo a usar R y R-Studio'
 author: "Prof. Edlin Guerra Castro"
 date: "3/2/2020"
 output:
-  pdf_document: default
   html_document: default
 ---
 
@@ -19,12 +18,20 @@ El programa [R](https://www.r-project.org/), sus versiones actualizadas y todos 
 
 [RStudio](https://rstudio.com/) es un entorno de desarrollo integrado (IDE) para **R**. Incluye una consola, editor de comandos y líneas de programación que admite la ejecución directa de código, así como herramientas para graficar, documentar, registrar el historial de comandos ejecutados, acceder a archivos, y muchas cosas más desde la gestión de un espacio de trabajo. **RStudio** hace que el trabajar con **R** sea más poderoso, y a su vez simple. Para que tengan una idea, esta guía se escribió desde **RStudio**.
 
-Esta práctica la desarrollaremos desde [Rstudio Cloud](https://rstudio.cloud/), una versión en línea de **RStudio** en el que podemos compartir los ejercicios y hacer seguimiento a las soluciones. Esto no los limita que instalen **R** y **RStusio** en sus computadores, por favor háganlo fuera del horario de clase. La idea por ahora es ser eficientes con el uso del tiempo y evitar distraernos con instalaciones. Para instalarlos (¡despues de clase!), descarguen los archivos instaladores desde:
+Esta práctica la desarrollaremos desde [Rstudio Cloud](https://rstudio.cloud/), una versión en línea de **RStudio** en el que podemos compartir los ejercicios y hacer seguimiento a las soluciones. Esto no los limita que instalen **R** y **RStusio** en sus computadores, por favor háganlo fuera del horario de clase. La idea por ahora es ser eficientes con el uso del tiempo y evitar distraernos con instalaciones. Para instalarlos (**¡despues de clase!**), descarguen los archivos instaladores desde:
 
 - [R](https://www.r-project.org/)
 - [RStudio](https://rstudio.com/)
 
-Lo que harán ahora es aceptar la invitación a *Rstudio Cloud* que les envié por correo. Acá un pequeño ejemplo, copien y peguen este código en la consola de Rstudio Cloud:
+Lo que harán ahora es:
+
+1. Aceptar la invitación a *Rstudio Cloud* que les envié por correo.
+2. Luego se registrarán con el usuario y contraseña que quieran (nota: pueden usar su cuenta gmail para hacerlo automático).
+3. Inmediatamente visitarán el repositorio de actividades en **R** de esta asignatura en [GitHub](https://github.com/edlinguerra/LCA-ME). Solo hagan click al enlace.
+4. En este punto vamos a clonar el repositorio con HTTPS, para ello copien desde el botón verde **Clone or download**, seleccionando la dirección `https` allí señalada.
+5. Entrarán a su sesión de 
+*Rstudio Cloud* y crearán un proyecto nuevo desde un repositorio (**New Project from Git Repo**). Peguen la dirección y listo. Se iniciará una sesión de **RStudio** con los archivos necesarios.   
+6. Acá un pequeño ejemplo, copien y peguen este código en la consola de Rstudio Cloud:
 
 ```{r, eval=FALSE}
 install.packages("gcookbook")
