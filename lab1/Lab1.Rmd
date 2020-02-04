@@ -44,7 +44,7 @@ data("climate")
 p <- ggplot(subset(climate, Source=="Berkeley"), aes(x=Year, y=Anomaly10y)) +
       geom_line()+
       annotate("segment", x=1850, xend=1820, y=-.8, yend=-.95, colour="blue", size=2, arrow=arrow()) +
-      annotate("segment", x=1950, xend=1980, y=-.25, yend=-.25, arrow=arrow(ends="both", angle = angle=90,length=unit(.2,"cm")))+
+      annotate("segment", x=1950, xend=1980, y=-.25, yend=-.25, arrow=arrow(ends="both", angle = 90,length=unit(.2,"cm")))+
       theme_bw()+
       xlab("Año")+
       ylab("Anomalías de la temperatura global (°C)")

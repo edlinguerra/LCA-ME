@@ -399,7 +399,7 @@ data(&quot;climate&quot;)
 p &lt;- ggplot(subset(climate, Source==&quot;Berkeley&quot;), aes(x=Year, y=Anomaly10y)) +
       geom_line()+
       annotate(&quot;segment&quot;, x=1850, xend=1820, y=-.8, yend=-.95, colour=&quot;blue&quot;, size=2, arrow=arrow()) +
-      annotate(&quot;segment&quot;, x=1950, xend=1980, y=-.25, yend=-.25, arrow=arrow(ends=&quot;both&quot;, angle = angle=90,length=unit(.2,&quot;cm&quot;)))+
+      annotate(&quot;segment&quot;, x=1950, xend=1980, y=-.25, yend=-.25, arrow=arrow(ends=&quot;both&quot;, angle = 90,length=unit(.2,&quot;cm&quot;)))+
       theme_bw()+
       xlab(&quot;Año&quot;)+
       ylab(&quot;Anomalías de la temperatura global (°C)&quot;)
