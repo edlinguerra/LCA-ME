@@ -11,15 +11,15 @@ library(tidyverse)
 
 # Lo que harán ahora es:
 
-1. Aceptar la invitación a *Rstudio Cloud* que les envié por correo.
-2. Luego se registrarán con el usuario y contraseña que quieran (nota: pueden usar su cuenta gmail para hacerlo automático).
-3. Inmediatamente visitarán el repositorio de actividades en **R** de esta asignatura en [GitHub](https://github.com/edlinguerra/LCA-ME). Solo hagan click al enlace.
-4. En este punto vamos a clonar el repositorio con HTTPS, para ello copien desde el botón verde **Clone or download**, seleccionando la dirección `https` allí señalada.
-5. Entrarán a su sesión de 
-*Rstudio Cloud* y crearán un proyecto nuevo desde un repositorio (**New Project from Git Repo**). Peguen la dirección y listo. Se iniciará una sesión de **RStudio** con los archivos necesarios.
-6. Abrirán los archivos Lab2.Rmd, lab2_e1.R y lab2_e2.R en las carpeta **lab2**
-7. Desde Lab2.Rmd active *Preview in Viewer Pane* y aplique *Knit*. Puede ahora visualizar la guía desde R-Studio sin necesidad de cambiar de ventanas en su pantalla
-8. Lea los pasos de las actividades desde el Viewer de R-Studio y responda y ejecute los comandos desde el archivo de comandos lab2_e1.R para el ejercicio 1 y lab2_e2.R para el ejercicio 2.
+1. Usen este vínculo para ingresar al espacio de trabajo de **R-Studio Cloud** https://rstudio.cloud/spaces/49899/join?access_code=ULN6xHU6ZFiEMZuaP5iafVwgdMOy3UNijbcvrlzi
+
+2. Noten el *Laboratorio 2* en la lista de proyectos, e inicien la tarea (*Assignment*)
+
+3. Una vez dentro del proyecto, abrirán los archivos Lab2.Rmd, lab2_e1.R y lab2_e2.R en las carpeta **lab2**
+
+4. Desde Lab2.Rmd active *Preview in Viewer Pane* y aplique *Knit*. Puede ahora visualizar la guía desde R-Studio sin necesidad de cambiar de ventanas en su pantalla
+
+5. Lea los pasos de las actividades desde el Viewer de R-Studio y responda y ejecute los comandos desde el archivo de comandos lab2_e1.R para el ejercicio 1 y lab2_e2.R para el ejercicio 2.
 
 # Distribución t-student: Ejericio 1 - Una muestra
 
