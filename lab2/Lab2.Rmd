@@ -13,7 +13,7 @@ library(tidyverse)
 
 1. Usen este vínculo para ingresar al espacio de trabajo de **R-Studio Cloud** https://rstudio.cloud/spaces/49899/join?access_code=ULN6xHU6ZFiEMZuaP5iafVwgdMOy3UNijbcvrlzi
 
-2. Noten el *Laboratorio 2* en la lista de proyectos, e inicien la tarea (*Assignment*)
+2. Noten el *Laboratorio 2* en la lista de proyectos, e inicien el laboratorio (*START*)
 
 3. Una vez dentro del proyecto, abrirán los archivos Lab2.Rmd, lab2_e1.R y lab2_e2.R en las carpeta **lab2**
 
