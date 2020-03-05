@@ -1,0 +1,69 @@
+---
+title: 'Modelación Estadística. Lab4: comparaciones múltiples'
+author: "Edlin Guerra Castro"
+date: "04/3/2020"
+output: html_document
+---
+```{r, include =  FALSE}
+library(tidyverse)
+```
+
+# Lo que harán ahora es:
+
+1. Usen este vínculo para ingresar al espacio de trabajo de **R-Studio Cloud** https://rstudio.cloud/spaces/49899/join?access_code=ULN6xHU6ZFiEMZuaP5iafVwgdMOy3UNijbcvrlzi
+
+2. Noten el *Laboratorio 4* en la lista de proyectos, e inicien el laboratorio (*START*)
+
+3. Una vez dentro del proyecto, abrirán los archivos Lab4.Rmd y lab4.R en las carpeta **lab4**
+
+4. Desde Lab4.Rmd active *Preview in Viewer Pane* y aplique *Knit*. Puede ahora visualizar la guía desde R-Studio sin necesidad de cambiar de ventanas en su pantalla. Recuerde previamente instalar los paquetes que señala R-Studio.
+
+5. Lea los pasos de las actividades desde el Viewer de R-Studio y responda y ejecute los comandos desde el archivo de comandos lab4.R
+
+# Aplicación de comparaciones múltiples luego del Análisis de Varianza (ANOVA)
+
+Continuamos con el caso de la planta procesadora de celulosa. Ya hicimos la primera evaluación estadística a los valores de DBO, y conseguimos evidencias estadísticas para indicar que la DBO cambia a lo largo del río. Ahora se requiere evaluar el patrón de diferencia, ya que solo algunas combinaciones de diferencias pueden o no reflejar impacto ambiental. Es importante destacar que el resultado del ANOVA que realizamos no implica autonámticamente que podemos hablar de un impacto ambiental, se debe detallar más en los resultados para poder señalar esto.
+
+```{r,  include =  FALSE}
+datos <- read.csv("datos.csv")
+```
+1. Identifica todas las posibles hipótesis alternativas y qué significaría cada una en el contexto del estudio.
+
+2. En caso no tengas desplegado las gráficas y resultados del ANOVA, repite el ANOVA, tablas y gráficos. 
+
+3. Para aplicar comparaciones pareadas entre todos los pares de medias de un factor, se puede usar la
+    función `pairwise.t.test`. Esta función toma en cuenta un valor de error común ("pooled"), y realiza todas las
+    comparaciones posibles (como si no hubieras aplicado un ANOVA). Conviene utilizar un método de ajuste a alfa
+    por el alto número de pruebas aplicadas ("family wise error rate"). Resuelto esto, responde:
+    a) ¿Cuántas pruebas de t habría que aplicar?
+    b) ¿Qué representan los números de esta matriz triangular?
+
+5. Para aplicar el procedimiento Tukey's HSD (Honest Smallest Difference) es necesario que el objeto sea el
+    resultado de una función `aov` (una función distinta de aplicar un ANOVA e R). Toma los mismos datos de DBO
+    analizados, y aplica la función `aov` en sustitución de la función `lm` usada antes. Al objeto resultante
+    aplícale la función `TukeyHSD`. 
+    a) ¿Qué representan los datos de la columna con el nombre diff? Usa la función 'aggregate' recien aprendida para
+    ayudarte en los cálculos. 
+    b) ¿Qué crees que sean los que están bajo lwr y upr?
+    c) Aplica la función `plot` al objeto que resultó de aplicar la de Tukey. Estudia e interpreta el gráfico que
+    produce.
+
+6. Para aplicar el procedimiento SNK de la librería `GAD` es necesario establecer cuales son factores fijos y 
+    cuales aleatorios. Primero tienes que instalar el paquete `GAD`, y luego llamarlo para hacerla disponible en 
+    esta sesión de R. Luego tienes que volver explícito que el factor dietas es un factor fijo. Ajustas el modelo, 
+    y después aplicas el procedimiento. Identifica estos pasos con las líneas de código a continuación e interpreta
+    la salida.
+    
+```{r}
+library(GAD)
+datos$localidades <- as.fixed(datos$localidades)
+mod.lm<-lm(datos$DBO~datos$localidades)
+snk.test(mod.lm, term="datos$localidades")
+```
+
+
+
+ 7. Compara los resultados de los 3 métodos usados.
+ a) ¿Cuál produce un mayor número de resultados significativos?
+ b) ¿Cuál involucra menor número de pruebas?
+ c) ¿Cuál prefieres en este caso? ¿Por qué?
