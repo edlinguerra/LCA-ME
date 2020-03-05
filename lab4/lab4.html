@@ -381,9 +381,10 @@ summary {
 </div>
 <div id="aplicación-de-comparaciones-múltiples-luego-del-análisis-de-varianza-anova" class="section level1">
 <h1>Aplicación de comparaciones múltiples luego del Análisis de Varianza (ANOVA)</h1>
+<p>Continuamos con el caso de la planta procesadora de celulosa. Ya hicimos la primera evaluación estadística a los valores de DBO, y conseguimos evidencias estadísticas para indicar que la DBO cambia a lo largo del río. Ahora se requiere evaluar el patrón de diferencia, ya que solo algunas combinaciones de diferencias pueden o no reflejar impacto ambiental. Es importante destacar que el resultado del ANOVA que realizamos no implica autonámticamente que podemos hablar de un impacto ambiental, se debe detallar más en los resultados para poder señalar esto.</p>
 <ol style="list-style-type: decimal">
 <li><p>Identifica todas las posibles hipótesis alternativas y qué significaría cada una en el contexto del estudio.</p></li>
-<li><p>En caso no tengas desplegado las gráficas y resultados del ANOVA, repite el ANOVA y gráfico.</p></li>
+<li><p>En caso no tengas desplegado las gráficas y resultados del ANOVA, repite el ANOVA, tablas y gráficos.</p></li>
 <li><p>Para aplicar comparaciones pareadas entre todos los pares de medias de un factor, se puede usar la función <code>pairwise.t.test</code>. Esta función toma en cuenta un valor de error común (“pooled”), y realiza todas las comparaciones posibles (como si no hubieras aplicado un ANOVA). Conviene utilizar un método de ajuste a alfa por el alto número de pruebas aplicadas (“family wise error rate”). Resuelto esto, responde:</p>
 <ol style="list-style-type: lower-alpha">
 <li>¿Cuántas pruebas de t habría que aplicar?</li>
@@ -397,35 +398,10 @@ summary {
 </ol></li>
 <li><p>Para aplicar el procedimiento SNK de la librería <code>GAD</code> es necesario establecer cuales son factores fijos y cuales aleatorios. Primero tienes que instalar el paquete <code>GAD</code>, y luego llamarlo para hacerla disponible en esta sesión de R. Luego tienes que volver explícito que el factor dietas es un factor fijo. Ajustas el modelo, y después aplicas el procedimiento. Identifica estos pasos con las líneas de código a continuación e interpreta la salida.</p></li>
 </ol>
-<pre class="r"><code>library(GAD)</code></pre>
-<pre><code>## Warning: package &#39;GAD&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## Loading required package: matrixStats</code></pre>
-<pre><code>## Warning: package &#39;matrixStats&#39; was built under R version 3.6.3</code></pre>
-<pre><code>## 
-## Attaching package: &#39;matrixStats&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     count</code></pre>
-<pre><code>## Loading required package: R.methodsS3</code></pre>
-<pre><code>## Warning: package &#39;R.methodsS3&#39; was built under R version 3.6.2</code></pre>
-<pre><code>## R.methodsS3 v1.8.0 (2020-02-14 07:10:20 UTC) successfully loaded. See ?R.methodsS3 for help.</code></pre>
-<pre class="r"><code>datos$localidades &lt;- as.fixed(datos$localidades)
+<pre class="r"><code>library(GAD)
+datos$localidades &lt;- as.fixed(datos$localidades)
 mod.lm&lt;-lm(datos$DBO~datos$localidades)
 snk.test(mod.lm, term=&quot;datos$localidades&quot;)</code></pre>
-<pre><code>## 
-## Student-Newman-Keuls test for: datos$localidades 
-## 
-## Standard error = 0.7108
-## Df = 36 
-##               Loc1    Loc4    Loc3    Loc2
-## Rank order:   1       2       3       4   
-## Ranked means: 23.7    24.3    25.8    29.7
-## Comparisons:                              
-## 1             4-1 ***                     
-## 2             3-1 ns  4-2 ***             
-## 3             2-1 ns  3-2 ns  4-3 ***     
-## ---
-## Signif. codes: &lt;0.001 &#39;***&#39; &lt;0.01 &#39;**&#39; &lt;0.05 &#39;*&#39; &gt;0.05 &#39;ns&#39;</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Compara los resultados de los 3 métodos usados.</li>
 </ol>

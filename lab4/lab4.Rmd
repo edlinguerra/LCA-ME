@@ -54,7 +54,7 @@ datos <- read.csv("datos.csv")
     y después aplicas el procedimiento. Identifica estos pasos con las líneas de código a continuación e interpreta
     la salida.
     
-```{r}
+```{r, eval=FALSE}
 library(GAD)
 datos$localidades <- as.fixed(datos$localidades)
 mod.lm<-lm(datos$DBO~datos$localidades)
