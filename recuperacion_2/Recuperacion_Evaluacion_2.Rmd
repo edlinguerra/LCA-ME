@@ -1,0 +1,34 @@
+---
+title: 'Modelació Estadística: Examen ordinario'
+author: "Edlin Guerra Castro"
+date: "12/06/2020"
+output: html_document
+---
+
+```{r, include =  FALSE}
+library(tidyverse)
+```
+
+##### Normas del Examen
+
+- Para las preguntas teóricas, se permite consulta bibliográfica pero no copia textual de referencias.
+- El ejercicio se debe resolver en R-Stuio Cloud.  
+- Dede entregar un documento en Word o pdf que atienda las preguntas teóricas y del ejercicio, no se requiere un archivo de comandos ya que se evaluará sobre lo efectuado en R-Studio Cloud.
+- El examen se entregará por correo electrónico a <edlin.guerra@enesmerida.unam.mx> el próximo lunes 15 de junio a las 08:00 h a más tardar.
+
+### Preguntas teóricas:
+
+1. Indique las principales diferencias entre la prueba *t* y el análisis de varianza (ANOVA). Explique brevemente qué evalúan sus hipótesis y cuál es el alcance de cada prueba (1 punto).
+
+2. Describa las consecuencias del error tipo I y del error tipo II cuando se evalúa una hipótesis nula estadística en ciencias ambientales. En este contexto ¿cuál es la relevancia del tamaño de efecto? y ¿por qué es importante la potencia estadística? (2 puntos)
+
+### Ejercicio: Contaminación por pesticidas organoclorados en el acuífero de Yucatán, México.
+
+Con la finalidad de identificar la viabilidad de obtención de agua potable del manto acuífero de Yucatán, se evaluaron los siguientes modelos: (1) La contaminación por DDT debe ser mayor a poca profundidad debido a la adsorción por parte de las partículas orgánicas más abundantes en los primeros metros del suelo. (2) La contaminación por DDT es mayor en épocas de lluvía, ya que las partículas de DDT son arrastradas con mayor facilidad de la superficie vegetal al manto acuífero. Para evaluar ambos modelos, se efectuó un estudio que implicó tomar 10 muestras de agua en perforaciones con 10 y 30 m de profundidad, en pleno pico de lluvías (septiembre) y en plena sequía (marzo). Considerando que el interés es sobre posible contaminación de POC, indique y resuelva:
+
+1. Hipótesis de investigación
+2. Hipótesis estadística y modelo lineal completo. Indique la naturaleza de los factores y número de niveles de cada uno.
+3. Someta a aprueba las hipótesis con la prueba estadística que mejor considere. Justifique la elección de la prueba estadística, asi como que se cumplan las espectativas de distribución de los residuales y homogeneidad de varianzas. Demuestre el resultado proporcionando la tabla estadística que generó la función que eligió.
+4. Describa los resultados con un gráfico estadístico e interprete.
+6. ¿Cuál es la recomendación considerando los resultados estadísticos?
+
