@@ -1,10 +1,11 @@
 ---
 title: 'Modelación Estadística. Lab1: Aprendiendo a usar R y R-Studio'
 author: "Prof. Edlin Guerra Castro"
-date: "19/2/2021"
+date: "02/2/2022"
 output:
   pdf_document: default
   html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,45 +16,68 @@ knitr::opts_chunk$set(echo = TRUE)
 
 El objetivo principal de este laboratorio es introducirlos a [R](https://www.r-project.org/) y [RStudio](https://rstudio.com/), las herramientas computacionales que utilizaremos a lo largo del semestre para aprender a aplicar los conceptos más importantes de *Modelación estadística*, pero en especial, para aprender a procesar y analizar datos reales.
 
-El programa [R](https://www.r-project.org/), sus versiones actualizadas y todos los paquetes con funciones, asi como otra información relevante se encuentre en los repositorios de R conocidos como **CRAN** (Comprehensive R Archive Network). Los distintos servidores distribuidos en todo el mundo, conforman el CRAN y son conocidos como los **CRAN mirrors** (de espejo). Para descargar los paquetes requieres antes escoger un **CRAN mirror**, y la función que te permite escogerlo de una lista que aparece en la consola es `chooseCRANmirror`. Alternativamente, se pueden descargar paquetes desde otros repositorios, uno muy popular y que estaremos usando en esta asignatura es [GitHub](https://github.com/).
+El programa [R](https://www.r-project.org/), sus versiones actualizadas y todos los paquetes con funciones, asi como otra información relevante se encuentre en los repositorios de R conocidos como **CRAN** (*Comprehensive R Archive Network*). Los distintos servidores distribuidos en todo el mundo, conforman el CRAN y son conocidos como los **CRAN mirrors** (de espejo). Para descargar los paquetes requieres antes escoger un **CRAN mirror**, y la función que te permite escogerlo de una lista que aparece en la consola es `chooseCRANmirror`. Alternativamente, se pueden descargar paquetes desde otros repositorios, como [GitHub](https://github.com/).
 
 [RStudio](https://rstudio.com/) es un entorno de desarrollo integrado (IDE) para **R**. Incluye una consola, editor de comandos y líneas de programación que admite la ejecución directa de código, así como herramientas para graficar, documentar, registrar el historial de comandos ejecutados, acceder a archivos, y muchas cosas más desde la gestión de un espacio de trabajo. **RStudio** hace que el trabajar con **R** sea más poderoso, y a su vez simple. Para que tengan una idea, esta guía se escribió desde **RStudio**.
 
-Esta práctica la desarrollaremos desde [Rstudio Cloud](https://rstudio.cloud/), una versión en línea de **RStudio** en el que podemos compartir los ejercicios y hacer seguimiento a las soluciones. Esto no los limita que instalen **R** y **RStusio** en sus computadores, por favor háganlo fuera del horario de clase. La idea por ahora es ser eficientes con el uso del tiempo y evitar distraernos con instalaciones. Para instalarlos (**¡despues de clase!**), descarguen los archivos instaladores desde:
+Para instalarlo estos programas, descarguen los archivos instaladores desde:
 
 - [R](https://www.r-project.org/)
 - [RStudio](https://rstudio.com/)
 
 Lo que harán ahora es:
 
-1. Aceptar la invitación al espacio de trabajo en *Rstudio Cloud* que les llegó por correo.
-2. Luego se registrarán con el usuario y contraseña que generaron
-3. Al ingresar notarán el espacio de trabajo de nombre *LCT-AE*. Entrarán a ese espacio de trabajo y harán clic sobre la tarea asignata de nombre *Laboratorio 1*.
-4. Una vez que se cargue la interface de *Rstudio*, generen un archivo de códigos vacío, siguiendo el símbolo de hoja en blanco y cruz verde justo debajo del menú **File**, es la primera opción. Un atajo para crearlo es con las teclas **Ctrl+Shift+N**
-5. Este archivo vacío es un editor de texto inteligente, que reconoce ciertos caracteres y palabras para autocompletar los comandos. Ese espacio será su borrador de comandos y notas. En este archivo irá pegando y ejecutando todos los códigos que a continuación se explican.
-6. Acá un pequeño ejemplo, copien y peguen todo le código del recuadro de abajo en su editor de comandos. Luego, coleque el cursor sobre al inicio de la primera linea de comando y presionen el botón **Run** en la esquina superior derecha de su achivo vación; alternativamente, presione **Ctrl+ENTER**. ¿qué ocurrió? haga esto para las primeras seis líneas de comando. Cuando llegue a **p <- ggplot...** selecciones todas las líneas faltantes del código y presione Run o **Ctrl+ENTER**. ¿Qué ocurrió?
+1. Descargar sus archivos de instalación y ejecutar los instaladores con las opciones que por omisión aparecen.
+2. Luego, una vez que se cargue la interface de *Rstudio*, generen un archivo de códigos vacío, siguiendo el símbolo de hoja en blanco y cruz verde justo debajo del menú **File**, es la primera opción. Un atajo para crearlo es con las teclas **Ctrl+Shift+N**
+3. Este archivo vacío es un editor de texto inteligente, que reconoce ciertos caracteres y palabras para autocompletar los comandos. Ese espacio será su borrador de comandos y notas. En este archivo irá pegando y ejecutando todos los códigos que a continuación se explican.
+4. Acá un pequeño ejemplo, copien y peguen todo el código del recuadro de abajo en su editor de comandos. Luego, coloque el cursor al inicio de la primera línea de comando y presionen el botón **Run** en la esquina superior derecha de su achivo de comandos; alternativamente, presione **Ctrl+ENTER**. ¿Qué ocurrió? haga esto para las primeras seis líneas de comando. Cuando llegue a **p <- ggplot...** seleccione todas las líneas faltantes del código y presione **Run** o **Ctrl+ENTER**. ¿Qué ocurrió?
 
-```{r, eval=FALSE}
-install.packages("gcookbook") #instalación del paquete tutorial de gráficos gcookbook
-install.packages("grid") #instalación de paquete gráfico grid
-install.packages("ggplot2") #instalación de paquete gráfico ggplot2
+```{r, eval=TRUE}
+#Este código es para generar un gráfico sobre anomalías en la temperatura
+#del planeta en las últimas décadas. Estas líneas de código van a instalar 
+#y carga tres paquetes, luego van a importar los datos y generar un gráfico
+#com varios elementos gráficos añadidos.
+
+#install.packages("gcookbook") #instalación del paquete tutorial de gráficos gcookbook
+#install.packages("grid") #instalación de paquete gráfico grid
+#install.packages("ggplot2") #instalación de paquete gráfico ggplot2
 library(gcookbook) #cargar paquete gcookbook en la sesión
 library(grid) #cargar paquete grid en la sesión
 library(ggplot2) #cargar paquete ggplot2 en la sesión
 
 data("climate") #importar datos de clima global del paquete gcookbook 
 
-p <- ggplot(subset(climate, Source=="Berkeley"), aes(x=Year, y=Anomaly10y)) +
-      geom_line()+
-      annotate("segment", x=1850, xend=1820, y=-.8, yend=-.95,
-               colour="blue", size=2, arrow=arrow()) +
-      annotate("segment", x=1950, xend=1980, y=-.25, yend=-.25,
-               arrow=arrow(ends="both", angle = 90,length=unit(.2,"cm")))+
-      theme_bw()+
-      xlab("Año")+
-      ylab("Anomalías de la temperatura global (°C)")
+#Generación del gráfico
+p <- ggplot(subset(climate, Source == "Berkeley"), aes(x = Year, y = Anomaly10y)) +
+  geom_line() +
+  annotate(
+    "segment",
+    x = 1850,
+    xend = 1820,
+    y = -.8,
+    yend = -.95,
+    colour = "blue",
+    size = 2,
+    arrow = arrow()
+  ) +
+  annotate(
+    "segment",
+    x = 1950,
+    xend = 1980,
+    y = -.25,
+    yend = -.25,
+    arrow = arrow(
+      ends = "both",
+      angle = 90,
+      length = unit(.2, "cm")
+    )
+  ) +
+  theme_bw() +
+  xlab("Año") +
+  ylab("Anomalías de la temperatura global (°C)")
 p  
 
+#Fin del código
 ```
 
 # Manos a la obra: Objetos, funciones y paquetes 
@@ -68,13 +92,13 @@ ls()
 
 El nombre de un objeto se asigna con el operador '<-', '->' o '=', y puede estar hecho de letras, números y puntuación. Nota: Usar el mismo nombre para dos objetos distintos implica perder la asignación del primer objeto
 ```{r, eval=FALSE}
-y.y<-10*10
-z.12<-81/9
-unam<-"Universidad Nacional Autonoma de Mexico"
+y.y <- 10 * 10
+z.12 <- 81 / 9
+unam <- "Universidad Nacional Autonoma de Mexico"
 
-xx<-4
+xx <- 4
 xx
-xx<-"xx ya no es el mismo"
+xx <- "xx ya no es el mismo"
 xx
 ```
 
@@ -95,7 +119,7 @@ mode(compar)
 
 Noten los números entre corchetes del lado izquierdo de la consola marcando el número de elementos que siguen en esa línea antes de llegar a una línea abajo. Luego de ejecutar las línea, ¿puede deducir qué hace `seq`?
 ```{r, eval=FALSE}
-muchos<-seq(0,50)
+muchos <- seq(0, 50)
 muchos
 ```
 
@@ -199,9 +223,9 @@ E) *List*: Este objeto puede ser visto como un estante, ya que agrupa ordenadame
 
 mi_lista <- vector(mode = "list")
 
-mi_lista[[1]]<-iris
-mi_lista[[2]]<-y.y
-mi_lista[[3]]<-unam
+mi_lista[[1]] <- iris
+mi_lista[[2]] <- y.y
+mi_lista[[3]] <- unam
 
 mi_lista
 ```
@@ -249,7 +273,7 @@ cor(iris$Sepal.Length, iris$Petal.Length)
 
 ```
 
-Usemos el paquete `ggplot2`para mejorar el gráfico:
+Usemos el paquete `ggplot2` para mejorar el gráfico:
 
 ```{r, eval = FALSE}
 
@@ -258,25 +282,27 @@ pp <- ggplot(data = iris, aes(x = Sepal.Length, y = Petal.Length, colour = Speci
   
 pp  
   
-#Mejoremos con capas
-pp +  theme_bw()+
-      xlab("Largo del sépalo (cm)")+
-      ylab("largo del pétalo (cm)")+
-      scale_y_continuous(breaks = seq(1,7,1))+
-      scale_x_continuous(breaks = seq(4,8,1))+
-      annotate(geom = "text", x= 4.3, y = 6.5, parse=TRUE, label= "italic(r) == 0.87")
+#Mejoremos con capas, cada capa es agregada con el símbolo +
+pp +  theme_bw()+ #fondo blanco
+      xlab("Largo del sépalo (cm)")+ #edición del título del eje x
+      ylab("largo del pétalo (cm)")+ #edición del título del eje y
+      scale_y_continuous(breaks = seq(1,7,1))+ #especificación de unidades en y
+      scale_x_continuous(breaks = seq(4,8,1))+ #especificación de unidades en x
+      #agregar el valor de correlación al gráfico
+      annotate(geom = "text", x= 4.3, y = 6.5, parse=TRUE, label= "italic(r) == 0.87") 
       
+
 #¿cuál gráfico le gustó más? 
 ```
 
 Llegados a este punto, vamos hacer algo de estadística descriptiva. Esta es la parte que deberán entregar como tarea. Calculen promedio, varianza y desviación estandar a la variable largo del sepalo (**Sepal.Length**). Usen para ello los códigos suminitrados y responda las preguntas en el cuadro. 
 
 ```{r, eval = FALSE}
-## PRREGUNTAS
+## PREGUNTAS
 
 # 1. Copia el comando que sigue. ¿Qué se calculó?
-xx<-iris$Sepal.Length
-sum(xx)/length(xx)
+xx <- iris$Sepal.Length
+sum(xx) / length(xx)
 
 # 2. Busca y aplica una función que ejecute la linea de comando anterior. 
 # (PISTA: escribe '?mean' en la cónsola y enter para ampliar tu búsqueda)
@@ -287,8 +313,8 @@ sum(xx)/length(xx)
 
 # 5. ¿Cuál es la diferencia entre estas dos fórmulas? ¿Representan lo mismo?
 
-sum((xx-mean(xx))^2)/length(xx)
-sum((xx-mean(xx))^2)/(length(xx)-1)
+sum((xx - mean(xx)) ^ 2) / length(xx)
+sum((xx - mean(xx)) ^ 2) / (length(xx) - 1)
 
 # 6. Con base en el valor de la varianza y usando operadores aritméticos, 
 # calcula la desviación estándar de ambas muestras.
@@ -301,7 +327,7 @@ boxplot(Sepal.Length~Species, data = iris)
 
 
 # 8. Calcule el promedio para cada especie usando la función aggregate.
-# (PISTA: escribe '?aggregate' en la cónsola y enter para # ver cómo se usa la función;
+# (PISTA: escribe '?aggregate' en la cónsola y enter para ver cómo se usa la función;
 # de las cuatro formas de uso, recomiendo el modo S3 para fórmulas).
 # Nombre al resultado como prom.sep
 
