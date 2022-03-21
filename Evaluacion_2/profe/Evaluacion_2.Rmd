@@ -1,19 +1,15 @@
 ---
 title: 'Modelació Estadística: 2da Evaluación'
 author: "Edlin Guerra Castro"
-date: "22/3/2020"
-output: html_document
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r, include =  FALSE}
 library(tidyverse)
 ```
-
-#### Normas del Examen
-
-1. El examen es individual. 
-2. Deden entregar un documento en pdf que atienda las preguntas así como un archivo de comandos con su nombre y apellido. Tanto el archivo en pdf como el archivo de comandos de R debe llamarse con su nombre (p. ej. EdlinGuerra.pdf y EdlinGuerra.R).
-3. El examen se entrega por correo electrónico a <edlin.guerra@enesmerida.unam.mx> el próximo lunes 30 de marzo a las 23:50 h a más tardar.
 
 ## Preámbulo: Contaminación por pesticidas organoclorados en el acuífero de Yucatán, México.
 
@@ -40,12 +36,13 @@ Con la finalidad de identificar la viabilidad de obtención de agua potable del 
 5. Replique el siguiente gráfico usando el paquete ggplot2. Consiste en proyectar los promedios y desviacion estándar según profundidad y época. Le recomiendo ver el libro en línea de Chang (2018), especialmente el capítulo 7.7. 
 
 ```{r, echo=FALSE}
-datos2 <- read.csv("datos2.csv")
+datos2 <- read.csv("~/UNAM/ENES/Lic_Ciencias_Ambientales/Modelacion_Estadistica/LCA-ME/Evaluacion_2/datos2.csv", row.names=1)
+
 ps <- position_dodge(0.3)
 datos2 %>%
   group_by(profundidad, epoca) %>%
-   summarise(pro = mean(DDT), des = sd (DDT)) %>%
-    ggplot(aes(x = profundidad, y = pro,colour = epoca, group = epoca)) +
+   summarize(pro = mean(DDT), des = sd (DDT), .groups = "keep") %>%
+    ggplot(aes(x = profundidad, y = pro, colour = epoca, group = epoca)) +
     geom_errorbar(aes(ymin = pro - des, ymax = pro + des), 
                   width=.2, size=0.25, colour="black", position=ps)+
     geom_point(position = ps, size = 3)+
