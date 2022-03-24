@@ -12,7 +12,7 @@ library(tidyverse)
 ##### Normas del Examen
 
 - Para las preguntas teóricas, se permite consulta bibliográfica pero no copia textual de referencias.
-- El ejercicio se debe resolver en R-Stuio Cloud.  
+- El ejercicio se debe resolver en el [R-Studio Cloud](https://rstudio.cloud/spaces/49899/join?access_code=ULN6xHU6ZFiEMZuaP5iafVwgdMOy3UNijbcvrlzi) a través de la asignación **examen_ordinario**.  
 - Dede entregar un documento en Word o pdf que atienda las preguntas teóricas y del ejercicio, no se requiere un archivo de comandos ya que se evaluará sobre lo efectuado en R-Studio Cloud.
 - El examen se entregará por correo electrónico a <edlin.guerra@enesmerida.unam.mx> el próximo lunes 15 de junio a las 08:00 h a más tardar.
 
