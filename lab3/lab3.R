@@ -6,6 +6,19 @@
 # 1. Importa los datos en R, y verifica sus características y estructura. ¿Cuántas dimensiones tiene la
 #tabla que importaste? ¿En qué difiere esta de aquellas usada en las pruebas de *t* para dos muestras? 
 
+#instlar ambos paquetes en caso no los tengan
+library(dplyr)
+library(tidyr)
+
+datos <- datos_originales %>% # CTR SHIFT M
+  pivot_longer(cols = 2:5, #entre lineas 14 y 16
+               names_to = "LOCALIDADES", #apila las localidades a columna llamada LOCALIDADES
+               values_to = "DBO") %>% #valores de DBO a columna llamada DBO
+  select(-localidades) %>% #elimino la columna localidades (no es informativa)
+  arrange(LOCALIDADES) #ordeno por LOCALIDADES
+
+
+boxplot(formula = DBO ~ LOCALIDADES, data = datos)
 
 # 
 # 
