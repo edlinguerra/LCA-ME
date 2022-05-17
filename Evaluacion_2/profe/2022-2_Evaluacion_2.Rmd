@@ -1,0 +1,105 @@
+---
+title: 'Modelació Estadística: 2da Evaluación'
+author: "Edlin Guerra Castro"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, include =  FALSE}
+library(tidyverse)
+```
+
+## Preámbulo: Contaminación por pesticidas organoclorados en el acuífero de Yucatán, México.
+
+Los plaguicidas organoclorados (POC) están prohibidos o restringidos en muchos países del mundo, pero todavía se usan en países en desarrollo para actividades agrícolas y ganaderas, así como para el control de vectores en campañas de salud pública. En el estado de Yucatán, las condiciones sociales de alta marginación (INEGI 2010) empujan a las comunidades rurales a producir sus alimentos a cualquier costo, y esto incluye el uso de POC, a pesar de su regulación en la [NORMA OFICIAL MEXICANA NOM-127-SSA1-1994](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444). El suelo kárstico en esta área tiene una alta vulnerabilidad a la contaminación del agua subterránea por el uso de POC, en efecto, alrededor del 30% de la población Maya consume agua directamente de pozos y sumideros contaminados. Sobre este tema, puede leer más en el estudio de [Polanco-Rodríguez *et al.* (2014)](https://doi.org/10.1111/wej.12080), y sus efectos en la leche materna de mujeres Maya en [Polanco-Rodríguez *et al.* (2017)](https://doi.org/10.1007/s10661-017-5768-y). A continuación un par de ejercicios con datos simulados basados en las cifras de [Polanco-Rodríguez *et al.* (2014)](https://doi.org/10.1111/wej.12080). 
+
+### Caso 1: Calidad del agua primer manto acuífero (3 puntos).
+
+Se requiere evaluar la características organolépticas del primer manto acuífero como alternativa para abastecer de agua potable a un nuevo fraccionamiento. El estudio es obligatorio para poder obtener el permiso por parte de la CONAGUA. Para ello se tomaron 10 muestras de agua a una profundidad de 10 metros. Cada muestra se obtuvo de una perforación diferente, en puntos aleatorios en un área aproximada de 10 hectáreas. De las variables medidas, se estimó la concentación de tres compuestos organoclorados: Aldrín, Dieldrín y DDT. Los límites de estos se definen en la [NORMA OFICIAL MEXICANA NOM-127-SSA1-1994](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444). Considerando que el interés es sobre posible contaminación de POC, indique y resuelva:
+
+1. Hipótesis de investigación
+2. Hipótesis Nula e hipótesis alternativa
+3. Someta a aprueba la hipótesis con la prueba estadística que mejor considere. Justifique la elecciónde la prueba estadística.
+4. Describa los resultados, interprete. Use las herramientas gráficas y descriptivas que mejor considere.
+5. ¿Cuál es la recomendación respecto al uso del primer manto acuífero como fuente de agua potable?
+
+```{r, eval=FALSE}
+
+############# GENERACIÓN DE DATOS POR EQUIPO #####################
+# Correr todo el código para generar los datos.
+# Ingrese el número de su equipo en los paréntesis de la función set.seed
+# ejemplo set.seed(3) asumiendo que está en el equipo 3
+
+set.seed() #incluya el núemro de su equipo
+
+#Datos parte 1
+
+aldrin <- c(seq(0.005,0.05, 0.005))
+dieldrin <- c(seq(0.005,0.04, 0.005))
+DDT <- c(seq(0.05,1.5,0.05))
+
+dat1 <- data.frame(
+  "Aldrin" = abs(rnorm(10, sample(aldrin, 1), 0.005)),
+  "Dieldrin" = abs(rnorm(10, sample(dieldrin, 1), 0.005)),
+  "DDT" = abs(rnorm(10, sample(DDT, 1), 0.05))
+  )
+
+write.csv(x = dat1, file = "datos1.csv")
+
+```
+
+
+### Caso 2: Calidad del agua según profundidad (7 puntos)
+
+Con la finalidad de identificar la viabilidad de obtención de agua potable del manto acuífero de Yucatán, se evaluó el siguiente modelo: La contaminación por DDT debe ser mayor a poca profundidad debido a la adsorción por parte de las partículas orgánicas más abundantes en los primeros metros del suelo. Para evaluar este modelo se efectuó un estudio que implicó tomar 10 muestras de agua en perforaciones con 10, 20 y 30 m de profundidad. Considerando que el interés es sobre posible contaminación de POC, indique y resuelva:
+
+1. Hipótesis de investigación
+2. Hipótesis y modelo lineal completo. Indique la naturaleza del factor y número de niveles.
+3. Someta a aprueba las hipótesis con la prueba estadística que mejor considere. Justifique la elección de la prueba estadística, asi como que se cumplan las espectativas de distribución de los residuales y homogeneidad de varianzas. Demuestre el resultado proporcionando la tabla estadística que generó la función que eligió.
+4. Describa los resultados e interprete.
+5. Represente los resultados usando un gráfico de promedios y desviación estándar.
+
+6. ¿Cuál es la recomendación considerando los resultados?
+
+```{r, eval=FALSE}
+############# GENERACIÓN DE DATOS POR EQUIPO #####################
+# Correr todo el código para generar los datos.
+# Ingrese el número de su equipo en los paréntesis de la función set.seed
+# ejemplo set.seed(3) asumiendo que está en el equipo 3
+
+set.seed() #incluya el núemro de su equipo
+
+#Datos parte 2
+
+efectos <- seq(0,1,0.1) 
+a <- abs(rnorm(10, sample(seq(0.5,0.8,0.1), 1), 0.05))
+
+
+p10<-data.frame("profundidad" = rep("10m", 10),
+                "DDT" = abs(rnorm(10, mean = sample(efectos,1) + a, sd = 0.3)))
+p20<-data.frame("profundidad" = rep("20m", 10),
+                "DDT" = abs(rnorm(10, mean = sample(efectos,1) + a/2, sd = 0.3)))
+p30<-data.frame("profundidad" = rep("30m", 10),
+                "DDT" = abs(rnorm(10, mean = sample(a, 1), sd = 0.3)))
+
+datos2 <- rbind(p10, p20, p30)
+
+write.csv(dat2, file = "datos2.csv")
+
+```
+
+
+## Referencias
+
+- [NOM‐127‐SSA1. (1994) Norma Oficial Mexicana. Modificación a la Norma Oficial Mexicana NOM‐127‐SSA1‐1994, Salud Ambiental. Agua para uso y consumo humano. Límites permisibles de calidad y tratamientos a que debe someterse el agua para su potabilización.](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444)
+
+- [Polanco Rodríguez, A.G., Alberto, J.A.N., Sánchez, J.S., Rejón, G.J.M., Gómez, J.M. and Del Valls Casillas, T.A. (2015), Contamination by organochlorine pesticides. Water and Environment Journal, 29: 140-150.](doi:10.1111/wej.12080)
+ 
+- [Polanco Rodríguez, Á.G., Inmaculada Riba López, M., Angel DelValls Casillas, T. et al (2017). Levels of persistent organic pollutants in breast milk of Maya women in Yucatan, Mexico. Environmental Monitoring and Assessment volume, 189(59)](https://doi.org/10.1007/s10661-017-5768-y)
+
+- [Quinn, G. P., and M. J. Keough. 2002. Experimental Design and Data Analysis for Biologists. Cambridge University Press, New York.](https://www.dropbox.com/s/23v88psleistqcp/Experimental%20Design%20and%20Data%20Analysis%20for%20Biologists.pdf?dl=0)
+
+- [Winston Chang (2018). R Graphics Cookbook, 2nd edition](https://r-graphics.org/)
+
