@@ -1,7 +1,6 @@
 ---
 title: 'Modelación Estadística. Lab2: Modelo lineal y Prueba de hipótesis simples'
 author: "Edlin Guerra Castro"
-date: "23/2/2022"
 output:
   pdf_document: default
   html_document: default
@@ -46,7 +45,7 @@ t.test(datos1$DBO, alternative = "greater", mu = 30)
 
 ```
 
-5. A partir del resultado obtenido (output o salida) responde a las siguientes preguntas:
+5. A partir del resultado obtenido (**output** o salida) responde a las siguientes preguntas:
     
     a) ¿Cuál fue el valor de *t* que obtuviste? 
     b) ¿Cuál es el valor de probabilidad asociado a ese valor de *t*?
