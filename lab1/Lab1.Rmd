@@ -38,9 +38,9 @@ Lo que harán ahora es:
 #y carga tres paquetes, luego van a importar los datos y generar un gráfico
 #com varios elementos gráficos añadidos.
 
-#install.packages("gcookbook") #instalación del paquete tutorial de gráficos gcookbook
-#install.packages("grid") #instalación de paquete gráfico grid
-#install.packages("ggplot2") #instalación de paquete gráfico ggplot2
+# install.packages("gcookbook") #instalación del paquete tutorial de gráficos gcookbook
+# install.packages("grid") #instalación de paquete gráfico grid
+# install.packages("ggplot2") #instalación de paquete gráfico ggplot2
 library(gcookbook) #cargar paquete gcookbook en la sesión
 library(grid) #cargar paquete grid en la sesión
 library(ggplot2) #cargar paquete ggplot2 en la sesión
@@ -56,7 +56,7 @@ p <- ggplot(subset(climate, Source == "Berkeley"), aes(x = Year, y = Anomaly10y)
     xend = 1820,
     y = -.8,
     yend = -.95,
-    colour = "blue",
+    colour = "red",
     size = 2,
     arrow = arrow()
   ) +
@@ -317,7 +317,7 @@ sum((xx - mean(xx)) ^ 2) / length(xx)
 sum((xx - mean(xx)) ^ 2) / (length(xx) - 1)
 
 # 6. Con base en el valor de la varianza y usando operadores aritméticos, 
-# calcula la desviación estándar de ambas muestras.
+# calcula la desviación estándar de XX.
 # Confirma tu resultado usando la función en R correspondiente.
 
 
