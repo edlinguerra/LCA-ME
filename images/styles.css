@@ -1,0 +1,8 @@
+.actividades-title-block .actividades-title-banner {
+  background-image: url(images/enes.jpg);
+  background-size: 300px;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 10px;
+  background-origin: content-box;
+}

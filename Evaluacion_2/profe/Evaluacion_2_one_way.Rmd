@@ -1,0 +1,67 @@
+---
+title: 'Modelació Estadística: 2da Evaluación'
+author: "Edlin Guerra Castro"
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, include =  FALSE}
+library(tidyverse)
+```
+
+## Preámbulo: Contaminación por pesticidas organoclorados en el acuífero de Yucatán, México.
+
+Los plaguicidas organoclorados (POC) están prohibidos o restringidos en muchos países del mundo, pero todavía se usan en países en desarrollo para actividades agrícolas y ganaderas, así como para el control de vectores en campañas de salud pública. En el estado de Yucatán, las condiciones sociales de alta marginación (INEGI 2010) empujan a las comunidades rurales a producir sus alimentos a cualquier costo, y esto incluye el uso de POC, a pesar de su regulación en la [NORMA OFICIAL MEXICANA NOM-127-SSA1-1994](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444). El suelo kárstico en esta área tiene una alta vulnerabilidad a la contaminación del agua subterránea por el uso de POC, en efecto, alrededor del 30% de la población Maya consume agua directamente de pozos y sumideros contaminados. Sobre este tema, puede leer más en el estudio de [Polanco-Rodríguez *et al.* (2014)](https://doi.org/10.1111/wej.12080), y sus efectos en la leche materna de mujeres Maya en [Polanco-Rodríguez *et al.* (2017)](https://doi.org/10.1007/s10661-017-5768-y). A continuación un par de ejercicios con datos simulados basados en las cifras de [Polanco-Rodríguez *et al.* (2014)](https://doi.org/10.1111/wej.12080). 
+
+### Caso 1: Calidad del agua primer manto acuífero (3 puntos).
+
+Se requiere evaluar la características organolépticas del primer manto acuífero como alternativa para abastecer de agua potable a un nuevo fraccionamiento. El estudio es obligatorio para poder obtener el permiso por parte de la CONAGUA. Para ello se tomaron 10 muestras de agua a una profundidad de 10 metros. Cada muestra se obtuvo de una perforación diferente, en puntos aleatorios en un área aproximada de 10 hectáreas. De las variables medidas, se estimó la concentación de tres compuestos organoclorados: Aldrín, Dieldrín y DDT. Los límites de estos se definen en la [NORMA OFICIAL MEXICANA NOM-127-SSA1-1994](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444). Considerando que el interés es sobre posible contaminación de POC, indique y resuelva:
+
+1. Hipótesis de investigación
+2. Hipótesis Nula e hipótesis alternativa
+3. Someta a aprueba la hipótesis con la prueba estadística que mejor considere. Justifique la elecciónde la prueba estadística.
+4. Describa los resultados, interprete. Use las herramientas gráficas y descriptivas que mejor considere.
+5. ¿Cuál es la recomendación respecto al uso del primer manto acuífero como fuente de agua potable?
+
+### Caso 2: Calidad del agua según profundidad (7 puntos)
+
+Con la finalidad de identificar la viabilidad de obtención de agua potable del manto acuífero de Yucatán, se evaluó el siguiente modelo: *La contaminación por DDT debe ser mayor a poca profundidad debido a la adsorción por parte de las partículas orgánicas más abundantes en los primeros metros del suelo*. Para evaluar este modelo, se efectuó un estudio que implicó tomar 10 muestras de agua en perforaciones con 10 y 30 m de profundidad en pleno pico de lluvías (septiembre) y en plena sequía (marzo). Considerando que el interés es sobre posible contaminación de POC, indique y resuelva:
+
+1. Hipótesis de investigación
+2. Hipótesis estadística y modelo lineal completo.
+3. Someta a aprueba las hipótesis con la prueba estadística que mejor considere. Justifique la elección de la prueba estadística, así como que se cumplan las expectativas de distribución de los residuales y homogeneidad de varianzas. Demuestre el resultado proporcionando la tabla estadística que generó la función que eligió.
+4. Describa los resultados e interprete.
+5. Replique el siguiente gráfico usando el paquete ggplot2. Consiste en proyectar los promedios y desviación estándar según profundidad y época. Le recomiendo ver el libro en línea de Chang (2018), especialmente el capítulo 7.7. 
+
+```{r, echo=FALSE}
+datos2 <- read.csv("~/UNAM/ENES/Lic_Ciencias_Ambientales/Modelacion_Estadistica/LCA-ME/Evaluacion_2/datos2.csv", row.names=1)
+
+ps <- position_dodge(0.3)
+datos2 %>%
+  group_by(profundidad, epoca) %>%
+   summarize(pro = mean(DDT), des = sd (DDT), .groups = "keep") %>%
+    ggplot(aes(x = profundidad, y = pro, colour = epoca, group = epoca)) +
+    geom_errorbar(aes(ymin = pro - des, ymax = pro + des), 
+                  width=.2, size=0.25, colour="black", position=ps)+
+    geom_point(position = ps, size = 3)+
+    xlab("Profundidad")+
+    ylab("DDT (mg/l)")+
+    theme_bw()
+```
+
+6. ¿Cuál es la recomendación considerando los resultados?
+
+## Referencias
+
+- [NOM‐127‐SSA1. (1994) Norma Oficial Mexicana. Modificación a la Norma Oficial Mexicana NOM‐127‐SSA1‐1994, Salud Ambiental. Agua para uso y consumo humano. Límites permisibles de calidad y tratamientos a que debe someterse el agua para su potabilización.](https://pdfs.semanticscholar.org/1275/c2ad256b25ef1c38aa0861909165e5c99a53.pdf?_ga=2.95214868.981706138.1584896444-1578643483.1584896444)
+
+- [Polanco Rodríguez, A.G., Alberto, J.A.N., Sánchez, J.S., Rejón, G.J.M., Gómez, J.M. and Del Valls Casillas, T.A. (2015), Contamination by organochlorine pesticides. Water and Environment Journal, 29: 140-150.](doi:10.1111/wej.12080)
+ 
+- [Polanco Rodríguez, Á.G., Inmaculada Riba López, M., Angel DelValls Casillas, T. et al (2017). Levels of persistent organic pollutants in breast milk of Maya women in Yucatan, Mexico. Environmental Monitoring and Assessment volume, 189(59)](https://doi.org/10.1007/s10661-017-5768-y)
+
+- [Quinn, G. P., and M. J. Keough. 2002. Experimental Design and Data Analysis for Biologists. Cambridge University Press, New York.](https://www.dropbox.com/s/23v88psleistqcp/Experimental%20Design%20and%20Data%20Analysis%20for%20Biologists.pdf?dl=0)
+
+- [Winston Chang (2018). R Graphics Cookbook, 2nd edition](https://r-graphics.org/)
+

@@ -1,4 +1,3 @@
-
 #mi archivo de comandos
 
 #este comando es para calcular el promedio de los datos

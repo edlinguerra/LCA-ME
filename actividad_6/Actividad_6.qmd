@@ -1,30 +1,26 @@
 ---
-title: "Modelación Estadística. Lab5: ANOVA multifactorial"
-author: "Edlin Guerra Castro"
-date: "12/3/2020"
-output: html_document
+title: 'Modelación Estadística'
+subtitle: "Actividada 6: ANOVA multifactorial"
+author: "Dr. Edlin Guerra"
+format: pdf
+editor: visual
+header-includes:
+  - \usepackage{graphicx}  # Cargar el paquete de imágenes
+  - \usepackage{fancyhdr}  # Permite personalizar encabezados y pies de página
+  - \pagestyle{fancy}      # Activa el uso de fancyhdr
+  - \fancyhf{}             # Limpia encabezados y pies de página
+  - \lhead{\includegraphics[width=3cm]{../images/enes.jpg}}  # Inserta el logo en la esquina superior izquierda
+  - \setlength{\headheight}{50pt}  # Ajusta la altura del encabezado si es necesario
+  - \thispagestyle{fancy}  # Asegura que el estilo fancy se aplique en la primera página
 ---
 ```{r, include =  FALSE}
 library(tidyverse)
 ```
 
-# Lo que harán ahora es:
-
-1. Usen este vínculo para ingresar al espacio de trabajo de **R-Studio Cloud** https://rstudio.cloud/spaces/49899/join?access_code=ULN6xHU6ZFiEMZuaP5iafVwgdMOy3UNijbcvrlzi
-
-2. Noten el *Laboratorio 5* en la lista de proyectos, e inicien el laboratorio (*START*)
-
-3. Una vez dentro del proyecto, abrirán los archivos Lab5.Rmd y lab5.R en las carpeta **lab5**
-
-4. Desde Lab5.Rmd active *Preview in Viewer Pane* y aplique *Knit*. Puede ahora visualizar la guía desde R-Studio sin necesidad de cambiar de ventanas en su pantalla. Recuerde previamente instalar los paquetes que señala R-Studio.
-
-5. Lea los pasos de las actividades desde el Viewer de R-Studio y responda y ejecute los comandos desde el archivo de comandos lab5.R
-
-# Preámbulo
-
-Continuamos con el caso de la planta procesadora de celulosa. Hasta ahora hemos desarrollamos ejercicios asumiendo diseños de muestreo muy simples, es decir, con una sola fuente de variación. En escenarios reales, los estudios ambientales tienen diseños de muestreo mucho más complejos, que implican varias (2, 3, 4, y más) fuentes de variación. Como vimos en clase, el ANOVA multifactorial es la mejor prueba estadística para evaluar de forma independiente y simultánea diseños con este tipo de complejidad. 
 
 # ANOVA multifactorial (ANOVA)
+
+Continuamos con el caso de la planta procesadora de celulosa. Hasta ahora hemos desarrollamos ejercicios asumiendo diseños de muestreo muy simples, es decir, con una sola fuente de variación. En escenarios reales, los estudios ambientales tienen diseños de muestreo mucho más complejos, que implican varias (2, 3, 4, y más) fuentes de variación. Como vimos en clase, el ANOVA multifactorial es la mejor prueba estadística para evaluar de forma independiente y simultánea diseños con este tipo de complejidad. 
 
 Asumamos que se efectuó un Estudio de impacto ambiental con un diseño BACI (**B**efore-**A**fter *x* **C**ontrol-**I**mpact), en el que se midió la DBO tres meses antes de operaciones de la planta y luego a los tres meses de iniciadas las operaciones. El modelo acá es que la puesta en operaciones de la planta promueve el incremento de la DBO del agua. No obstante, las mediciones se efectuaron en dos localidades: Loc1 (río arriba) y Loc2 (justo en las inmediaciones de la descarga de la planta). El modelo espacial implica que la DBO del agua en Loc2 debe ser mayor a Loc1 debido a las cercanía con la descargas de la planta. Note, sin embargo, que esto debe ocurrir sólo despues de las operaciones de la planta, ya que si antes la loc2 ya presentaba mayores niveles de DBO que loc1, no se puede asumir que la planta incrementó la DBO del agua en loc2. Inspeccione los datos y responda:  
 

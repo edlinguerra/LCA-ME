@@ -1,4 +1,4 @@
-# comandos para resolver la 2da parte de la actividad 2
+# comandos para resolver la 2da parte de la actividad 3
 
 datos2 <- read.csv("C:/Users/Edlin/OneDrive/Documents/UNAM/ENES/Lic_Ciencias_Ambientales/Modelacion_Estadistica/LCA-ME/lab2/datos2.csv", stringsAsFactors=TRUE)
 
